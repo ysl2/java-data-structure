@@ -10,9 +10,9 @@ public class SortTest {
 //		 BubbleSort.sort(arr);
 //         SelectSort.sort(arr);
 //         InsertSort.sort(arr);
-         ShellSort.sort(arr);
+//         ShellSort.sort(arr);
         // QuickSort.sort(arr);
-        // MergeSort.sort(arr);
+         MergeSort.sort(arr);
         // HeapSort.sort(arr);
         System.out.println(Arrays.toString(arr));
     }

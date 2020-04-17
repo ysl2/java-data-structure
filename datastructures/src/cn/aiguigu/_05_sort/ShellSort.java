@@ -38,7 +38,7 @@ public class ShellSort {
      * @return: void
      * @Author: YSL
      * @Date: 2020/4/16 13:51
-     * @Description: 在老师的移动式的基础上，我自己结合弹幕修改的版本
+     * @description: 在老师的移动式的基础上，我自己结合弹幕修改的版本
      */
     public static void teacherShellMoveSortCode2(int[] arr) {
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
@@ -60,7 +60,7 @@ public class ShellSort {
      * @return: void
      * @Author: YSL
      * @Date: 2020/4/16 11:49
-     * @Description: 老师的希尔排序（移动式）
+     * @description: 老师的希尔排序（移动式）
      */
     public static void teacherShellMoveSortCode(int[] arr) {
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
@@ -83,7 +83,7 @@ public class ShellSort {
      * @return: void
      * @Author: YSL
      * @Date: 2020/4/16 11:43
-     * @Description: 在老师的交换式基础上，我自己修改的版本
+     * @description: 在老师的交换式基础上，我自己修改的版本
      */
     public static void teacherShellChangeSortCode2(int[] arr) {
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {

@@ -25,7 +25,7 @@ public class QuickSort {
      * @return: void
      * @Author: YSL
      * @Date: 2020/4/16 15:31
-     * @Description: 老师演示的快速排序，讲的乱七八糟的
+     * @description: 老师演示的快速排序，讲的乱七八糟的
      */
     public static void teacherQuickSort(int[] arr, int left, int right) {
         int i = left;
@@ -76,7 +76,7 @@ public class QuickSort {
      * @return: void
      * @Author: YSL
      * @Date: 2020/4/16 14:52
-     * @Description: b站黑马的快速排序
+     * @description: b站黑马的快速排序
      * https://www.bilibili.com/video/BV1it41167v2?from=search&seid=9512656892759597719
      */
     public static void heimaQuickSortCode(int[] arr, int left, int right) {
@@ -124,7 +124,7 @@ public class QuickSort {
      * @return: void
      * @Author: YSL
      * @Date: 2020/4/16 14:18
-     * @Description: 自己尝试写快速排序，有错误
+     * @description: 自己尝试写快速排序，有错误
      */
     public static void selfTryCode(int[] arr, int start, int end) {
         int i = start;

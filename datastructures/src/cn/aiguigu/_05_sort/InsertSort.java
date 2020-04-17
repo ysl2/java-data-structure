@@ -57,7 +57,7 @@ public class InsertSort {
      * @return: void
      * @Author: YSL
      * @Date: 2020/4/16 12:08
-     * @Description:老师的插入排序（改良版）
+     * @description:老师的插入排序（改良版）
      */
     public static void teacherSortCode2(int[] arr) {
         for (int i = 1; i < arr.length; i++) {

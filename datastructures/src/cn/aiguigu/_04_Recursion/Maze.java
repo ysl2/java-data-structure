@@ -1,7 +1,5 @@
 package cn.aiguigu._04_Recursion;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
  * 小球迷宫问题
  */
@@ -90,7 +88,7 @@ public class Maze {
      * @param j    从哪个位置开始找（横向坐标）
      * @return 找到返回true，找不到返回false
      */
-    public static boolean setWay(@NotNull int[][] maze, int i, int j) {
+    public static boolean setWay( int[][] maze, int i, int j) {
         if (maze[END_HEIGHT][END_WIDTH] == CAN_MOVE) {
             return true;
         }
