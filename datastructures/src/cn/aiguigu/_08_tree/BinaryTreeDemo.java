@@ -3,22 +3,24 @@ package cn.aiguigu._08_tree;
 /**
  * @author: YSL
  * @date: 2020/4/19 10:14
- * @description: 二叉树的遍历（前、中、后）
+ * @description: 二叉树的遍历（前、中、后）与删除
  */
 public class BinaryTreeDemo {
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
 
         Node root = new Node(1, "宋江");
-        Node node2 = new Node(2, "吴用");
-        Node node3 = new Node(3, "卢俊义");
-        Node node4 = new Node(4, "林冲");
-        Node node5 = new Node(5, "关胜");
+        Node node3 = new Node(3, "吴用");
+        Node node6 = new Node(6, "卢俊义");
+        Node node8 = new Node(8, "林冲");
+        Node node10 = new Node(10, "关胜");
+        Node node14 = new Node(14, "关胜a");
 
-        root.setLeft(node2);
-        root.setRight(node3);
-        node3.setRight(node4);
-        node3.setLeft(node5);
+        root.setLeft(node3);
+        root.setRight(node6);
+        node3.setLeft(node8);
+        node3.setRight(node10);
+        node6.setLeft(node14);
         binaryTree.setRoot(root);
 
         binaryTree.teacherPreOrder();
@@ -26,6 +28,16 @@ public class BinaryTreeDemo {
         binaryTree.teacherInfixOrder();
         System.out.println();
         binaryTree.teacherPostOrder();
+//
+//        System.out.println();
+//
+//        System.out.println(binaryTree.teacherPreOrderSearch(5));
+//        System.out.println(binaryTree.teacherPostOrderSearch(5));
+//        System.out.println(binaryTree.teacherInfixOrderSearch(5));
+
+//        binaryTree.teacherDeleteNode(1);
+//        binaryTree.teacherPreOrder();
+
     }
 }
 
@@ -87,7 +99,65 @@ class BinaryTree {
         System.out.println("空二叉树");
     }
 
+    /**
+     * @param index: 待查找的索引
+     * @return: cn.aiguigu._08_tree.Node
+     * @author: YSL
+     * @date: 2020/4/19 16:32
+     * @description: 前序查找
+     */
+    public Node teacherPreOrderSearch(int index) {
+        if (root != null) {
+            return root.teacherPreOrderSearch(index);
+        }
+        return null;
+    }
 
+    /**
+     * @param index: 带查找的索引
+     * @return: cn.aiguigu._08_tree.Node
+     * @author: YSL
+     * @date: 2020/4/19 16:34
+     * @description: 中序查找
+     */
+    public Node teacherInfixOrderSearch(int index) {
+        if (root != null) {
+            return root.teacherInfixOrderSearch(index);
+        }
+        return null;
+    }
+
+    /**
+     * @param index: 带查找的索引
+     * @return: cn.aiguigu._08_tree.Node
+     * @author: YSL
+     * @date: 2020/4/19 16:35
+     * @description: 后序查找
+     */
+    public Node teacherPostOrderSearch(int index) {
+        if (root != null) {
+            return root.teacherPostOrderSearch(index);
+        }
+        return null;
+    }
+
+    /**
+     * @param index: 待删除的索引
+     * @return: void
+     * @author: YSL
+     * @date: 2020/4/19 17:15
+     * @description: 删除节点
+     */
+    public void teacherDeleteNode(int index) {
+        if (root == null) {
+            return;
+        }
+        if (root.getIndex() == index) {
+            root = null;
+            return;
+        }
+        root.teacherDeleteNode(index);
+    }
 }
 
 /**
@@ -202,6 +272,27 @@ class Node {
     }
 
     /**
+     * @param index: 待查找的索引
+     * @return: cn.aiguigu._08_tree.Node
+     * @author: YSL
+     * @date: 2020/4/19 16:17
+     * @description: 中序查找
+     */
+    public Node teacherInfixOrderSearch(int index) {
+        Node result = null;
+        if (this.left != null) {
+            result = this.left.teacherInfixOrderSearch(index);
+        }
+        if (result == null && this.index == index) {
+            return this;
+        }
+        if (result == null && this.right != null) {
+            result = this.right.teacherInfixOrderSearch(index);
+        }
+        return result;
+    }
+
+    /**
      * @return: void
      * @author: YSL
      * @date: 2020/4/19 11:43
@@ -215,5 +306,50 @@ class Node {
             this.right.teacherPostOrder();
         }
         System.out.println(this);
+    }
+
+    /**
+     * @param index: 带查找的索引
+     * @return: cn.aiguigu._08_tree.Node
+     * @author: YSL
+     * @date: 2020/4/19 16:22
+     * @description: 后序查找
+     */
+    public Node teacherPostOrderSearch(int index) {
+        Node result = null;
+        if (this.left != null) {
+            result = this.left.teacherInfixOrderSearch(index);
+        }
+        if (result == null && this.right != null) {
+            result = this.right.teacherInfixOrderSearch(index);
+        }
+        if (result == null && this.index == index) {
+            return this;
+        }
+        return result;
+    }
+
+    /**
+     * @param index: 待查找的索引
+     * @return: void
+     * @author: YSL
+     * @date: 2020/4/19 17:07
+     * @description: 删除节点
+     */
+    public void teacherDeleteNode(int index) {
+        if (this.left != null && this.left.index == index) {
+            this.left = null;
+            return;
+        }
+        if (this.right != null && this.right.index == index) {
+            this.right = null;
+            return;
+        }
+        if (this.left != null) {
+            this.left.teacherDeleteNode(index);
+        }
+        if (this.right != null) {
+            this.right.teacherDeleteNode(index);
+        }
     }
 }
