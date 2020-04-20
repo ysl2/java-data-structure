@@ -1,4 +1,4 @@
-package threaded_binary_tree;
+package cn.aiguigu._08_tree.threaded_binary_tree;
 
 /**
  * @author: YSL
@@ -16,17 +16,17 @@ public class ThreadedBinaryTreeDemo {
         Node node10 = new Node(10, "关胜");
         Node node14 = new Node(14, "关胜a");
 
-        root.setLeft(node14);
-        root.setRight(node14);
-        node14.setLeft(node8);
-        node14.setRight(node10);
-        node14.setLeft(node14);
+        root.setLeft(node3);
+        root.setRight(node6);
+        node3.setLeft(node8);
+        node3.setRight(node10);
+        node6.setLeft(node14);
         threadedBinaryTree.setRoot(root);
 
-        threadedBinaryTree.threadedNodes();
-
-        System.out.println(node10.getLeft());
-        System.out.println(node10.getRight());
+        //线索化
+        threadedBinaryTree.teacherThreadedNodes();
+        //遍历线索化二叉树
+        threadedBinaryTree.teacherThreadList();
     }
 }
 
@@ -52,8 +52,8 @@ class ThreadedBinaryTree {
      * @date: 2020/4/19 23:33
      * @description: 方法重载，用于封装同名带参方法
      */
-    public void threadedNodes() {
-        this.threadedNodes(root);
+    public void teacherThreadedNodes() {
+        this.teacherThreadedNodes(root);
     }
 
     /**
@@ -62,13 +62,14 @@ class ThreadedBinaryTree {
      * @author: YSL
      * @date: 2020/4/19 22:06
      * @description: 对二叉树进行中序线索化的方法
+     * Tips:后序小提示，找到当前节点的父节点，把当前节点变成父节点的右节点即可
      */
-    public void threadedNodes(Node node) {
+    public void teacherThreadedNodes(Node node) {
         if (node == null) {
             return;
         }
         //左子树线索化
-        threadedNodes(node.getLeft());
+        teacherThreadedNodes(node.getLeft());
         //当前节点线索化[有难度]
         if (node.getLeft() == null) {
             node.setLeft(pre);
@@ -85,7 +86,28 @@ class ThreadedBinaryTree {
          */
         pre = node;
         //右子树线索化
-        threadedNodes(node.getRight());
+        teacherThreadedNodes(node.getRight());
+    }
+
+    /**
+     * @return: void
+     * @author: YSL
+     * @date: 2020/4/20 11:12
+     * @description: 遍历线索化二叉树的方法
+     */
+    public void teacherThreadList() {
+        Node node = root;
+        while (node != null) {
+            while (node.getLeftType() == 0) {
+                node = node.getLeft();
+            }
+            System.out.println(node);
+            while (node.getRightType() == 1) {
+                node = node.getRight();
+                System.out.println(node);
+            }
+            node = node.getRight();
+        }
     }
 
     /**
