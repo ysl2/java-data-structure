@@ -1,5 +1,10 @@
 package cn.aiguigu._08_tree.huffman.huffman_code;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author: YSL
  * @date: 2020/4/20 20:55
@@ -7,7 +12,35 @@ package cn.aiguigu._08_tree.huffman.huffman_code;
  */
 public class HuffmanCode {
     public static void main(String[] args) {
+        String content = "i like like like java do you like a java";
+    }
 
+    /*
+     * @param bytes: 接收字节数组
+     * @return: java.util.List<cn.aiguigu._08_tree.huffman.huffman_code.Node>
+     * @author: YSL
+     * @date: 2020/4/24 9:41
+     * @description:
+     */
+    private static List<Node> getNodes(byte[] bytes) {
+        //1创建一个ArrayList
+        ArrayList<Node> nodes = new ArrayList<Node>();
+        //遍历 bytes , 统计 每一个byte出现的次数->map[key,value]
+        Map<Byte, Integer> counts = new HashMap<>();
+        for (byte b : bytes) {
+            Integer count = counts.get(b);
+            if (count == null) { // Map还没有这个字符数据,第一次
+                counts.put(b, 1);
+            } else {
+                counts.put(b, count + 1);
+            }
+        }
+        //把每一个键值对转成一个Node 对象，并加入到nodes集合
+        //遍历map
+        for (Map.Entry<Byte, Integer> entry : counts.entrySet()) {
+            nodes.add(new Node(entry.getKey(), entry.getValue()));
+        }
+        return nodes;
     }
 }
 
@@ -26,6 +59,7 @@ class Node implements Comparable<Node> {
         this.data = data;
         this.weight = weight;
     }
+
     /**
      * @param o:
      * @return: int
